@@ -23,7 +23,7 @@ public class FormActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        editTextName = findViewById(R.id.acticity_form_edittext_name);
+        editTextName = findViewById(R.id.activity_main_textview_name);
         buttonValidate = findViewById(R.id.activity_form_button_name);
 
         buttonValidate.setOnClickListener(new View.OnClickListener() {
@@ -35,11 +35,10 @@ public class FormActivity extends AppCompatActivity {
     }
 
     private void saveData(){
-        Intent intent = new Intent();
-
-        intent.putExtra("USERNAME", editTextName.getText().toString());
-
-        setResult(RESULT_OK,intent);
+        String name = editTextName.getText().toString();
+        if (!name.isEmpty()){
+            DataManager.getInstance().addName(name);
+        }
         finish();
     }
 
